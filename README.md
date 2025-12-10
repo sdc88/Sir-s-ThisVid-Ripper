@@ -1,7 +1,7 @@
 <p align="center">
-  <h1 align="center">🎬 Sir's ThisVid Ripper</h1>
+  <img src="http://sirdominic.scot/css/sirthisvid.png" alt="Sir's ThisVid Ripper">
   <p align="center">
-    <strong>Bulk download videos from ThisVid with ease</strong>
+    <strong>A simple tool to bulk download videos from ThisVid to your computer</strong>
   </p>
   <p align="center">
     <a href="#-quick-start">Quick Start</a> •
@@ -12,66 +12,99 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/python-3.9+-blue.svg" alt="Python 3.9+">
-  <img src="https://img.shields.io/badge/platform-Windows%20%7C%20macOS%20%7C%20Linux-lightgrey.svg" alt="Platform">
-  <img src="https://img.shields.io/github/license/sdc88/Sir-s-ThisVid-Ripper" alt="License">
-  <img src="https://img.shields.io/badge/powered%20by-yt--dlp-red.svg" alt="Powered by yt-dlp">
+  <img src="https://img.shields.io/badge/python-3.9+-cc0000.svg" alt="Python 3.9+">
+  <img src="https://img.shields.io/badge/platform-Windows%20%7C%20macOS%20%7C%20Linux-cc0000.svg" alt="Platform">
+  <img src="https://img.shields.io/github/license/sdc88/Sir-s-ThisVid-Ripper?color=cc0000" alt="License">
+  <img src="https://img.shields.io/badge/powered%20by-yt--dlp-cc0000.svg" alt="Powered by yt-dlp">
 </p>
+
+---
+
+## 🤔 What Is This?
+
+This is a **Python script** that automatically downloads videos from ThisVid listing pages. Instead of clicking and saving each video one by one, this tool does it all for you.
+
+**You don't need to be a programmer to use this** — just follow the steps below. If you can install an app and double-click a file, you can use this.
+
+### What You'll Need to Install First
+
+| Program | What it is | Where to get it |
+|---------|-----------|-----------------|
+| **Python** | The programming language this script runs on (like how Word documents need Word to open) | [python.org/downloads](https://www.python.org/downloads/) |
+| **yt-dlp** | A video downloading tool that runs in the background | Installed automatically when you follow the steps below |
 
 ---
 
 ## ✨ Features
 
-- 📥 **Bulk downloading** — Scrape entire listing pages and download all videos
-- 💾 **Progress tracking** — Stop and resume anytime, never re-download the same video
-- 🔄 **Automatic retry** — Failed downloads are tracked so you can retry them later
-- 🖥️ **Cross-platform** — Works on Windows, macOS, and Linux
-- 🚀 **Simple setup** — Just Python and a few dependencies
+- 📥 **Bulk downloading** — Downloads entire pages of videos automatically
+- 💾 **Progress tracking** — Stop anytime and pick up where you left off
+- 🔄 **Handles failures** — If a video fails, it's logged so you can retry later
+- 🖥️ **Works everywhere** — Windows, Mac, and Linux
 
 ---
 
 ## 🚀 Quick Start
 
-### Prerequisites
+### Step 1: Install Python
 
-| Requirement | How to get it |
-|-------------|---------------|
-| **Python 3.9+** | [python.org/downloads](https://www.python.org/downloads/) — tick "Add to PATH" on Windows! |
-| **yt-dlp** | `pip install yt-dlp` |
+1. Go to [python.org/downloads](https://www.python.org/downloads/)
+2. Click the big yellow **Download Python** button
+3. Run the installer
+4. **⚠️ IMPORTANT (Windows only):** Tick the box that says **"Add Python to PATH"** before clicking Install
 
-### Installation
+### Step 2: Download This Tool
 
+**Option A — Easy way:**
+1. Click the green **Code** button at the top of this page
+2. Click **Download ZIP**
+3. Extract the ZIP file somewhere (like your Desktop or Downloads folder)
+
+**Option B — If you know Git:**
 ```bash
-# Clone the repo
 git clone https://github.com/sdc88/Sir-s-ThisVid-Ripper.git
-cd Sir-s-ThisVid-Ripper
-
-# Install dependencies
-pip install -r requirements.txt
 ```
 
-### Usage
+### Step 3: Install the Dependencies
 
-**Windows:** Double-click `run.bat`
+Open **Terminal** (Mac/Linux) or **Command Prompt** (Windows), then:
+
+1. Navigate to the folder you extracted. For example:
+   ```bash
+   cd Desktop/Sir-s-ThisVid-Ripper
+   ```
+
+2. Install the required packages:
+   ```bash
+   pip install -r requirements.txt
+   ```
+   
+   On Mac/Linux, you might need to use `pip3` instead:
+   ```bash
+   pip3 install -r requirements.txt
+   ```
+
+### Step 4: Run It
+
+**Windows:** Just double-click `run.bat`
 
 **Mac/Linux:** 
 ```bash
-chmod +x run.sh
 ./run.sh
 ```
 
-**Or manually:**
+Or on any system:
 ```bash
 python scraper.py
 ```
 
-Videos will appear in the `thisvid_downloads` folder.
+Videos will download to a folder called `thisvid_downloads`.
 
 ---
 
 ## ⚙️ Configuration
 
-Open `scraper.py` and edit these values at the top:
+Before running, you can change which pages to download. Open `scraper.py` in any text editor (Notepad, TextEdit, VS Code) and look for these lines near the top:
 
 ```python
 START_PAGE = 37068  # Start from this page (works backwards)
@@ -80,49 +113,45 @@ END_PAGE = 37060    # Stop at this page (set to 1 for everything)
 BASE_URL = "https://thisvid.com/gay-newest/{}/"  # Change category here
 ```
 
-> **💡 Tip:** To find page numbers, navigate to ThisVid and look at the URL — e.g., `thisvid.com/gay-newest/500/` is page 500.
+**How to find page numbers:** Go to ThisVid, navigate to a listing page, and look at the URL. For example, `thisvid.com/gay-newest/500/` means page 500.
 
 ---
 
 ## 📁 Progress Files
 
-The script creates two files to track progress:
+The script creates two files to remember what it's done:
 
-| File | Purpose |
-|------|---------|
-| `download_status.csv` | All video URLs with status: `pending`, `completed`, or `failed` |
-| `scraped_pages.txt` | Which listing pages have been scraped |
+| File | What it does |
+|------|--------------|
+| `download_status.csv` | List of all videos: pending, completed, or failed |
+| `scraped_pages.txt` | Which listing pages have been checked |
 
-> ⚠️ **Don't delete these** unless you want to start from scratch!
+**Don't delete these** unless you want to start completely fresh!
 
 ---
 
 ## 🔧 Troubleshooting
 
 <details>
-<summary><strong>"pip is not recognized"</strong></summary>
+<summary><strong>❌ "python is not recognized" or "pip is not recognized"</strong></summary>
 
-Python wasn't added to PATH during installation. Either:
-- Reinstall Python and tick "Add Python to PATH"
-- Or use: `python -m pip install -r requirements.txt`
+This means Python wasn't added to your system PATH during installation.
+
+**Fix:** Reinstall Python from [python.org/downloads](https://www.python.org/downloads/) and make sure to tick **"Add Python to PATH"** at the start of the installer.
 </details>
 
 <details>
-<summary><strong>"yt-dlp is not recognized"</strong></summary>
+<summary><strong>❌ "yt-dlp is not recognized"</strong></summary>
 
-Try: `python -m pip install yt-dlp`
+Try running: `python -m pip install yt-dlp`
 </details>
 
 <details>
-<summary><strong>Some videos fail to download</strong></summary>
+<summary><strong>❌ Some videos fail to download</strong></summary>
 
-Some videos may be private, deleted, or geo-blocked. Check `download_status.csv` to see which ones failed. To retry them, change their status from `failed` to `pending` and run the script again.
-</details>
+Some videos might be private, deleted, or geo-blocked. The script marks these as "failed" and moves on.
 
-<details>
-<summary><strong>I want to scrape a different category</strong></summary>
-
-Change the `BASE_URL` variable in `scraper.py`. Keep the `{}` where the page number should go.
+**To retry failed videos:** Open `download_status.csv` in Excel or a text editor, find the failed entries, change `failed` to `pending`, save the file, and run the script again.
 </details>
 
 ---
@@ -134,5 +163,22 @@ Change the `BASE_URL` variable in `scraper.py`. Keep the `{}` where the page num
 ---
 
 <p align="center">
-  Made with ☕ by <a href="https://github.com/sdc88">Sir</a>
+  <strong>More from Sir:</strong><br><br>
+  <a href="https://thevault.locker">🔒 The Vault+</a> · 
+  <a href="https://cultofsir.com">👁️ The Cult of Sir</a> · 
+  <a href="https://sirdominic.store">🛒 Sir Store</a>
+</p>
+
+<p align="center">
+  <a href="https://sirdominic.scot">
+    <img src="http://sirdominic.scot/css/eyehq.png" alt="Sir Studios" height="40">
+  </a>
+  &nbsp;&nbsp;&nbsp;
+  <a href="https://sirdominic.scot">
+    <img src="http://sirdominic.scot/css/sirstudios.png" alt="Sir Studios" height="40">
+  </a>
+</p>
+
+<p align="center">
+  Made with ☕ by <a href="https://sirdominic.scot">Sir</a>
 </p>
