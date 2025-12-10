@@ -1,5 +1,7 @@
 <p align="center">
   <img src="http://sirdominic.scot/css/sirthisvid.png" alt="Sir's ThisVid Ripper">
+  <br><br>
+  <img src="http://sirdominic.scot/css/scraperpreview.png" alt="Preview">
   <p align="center">
     <strong>A simple tool to bulk download videos from ThisVid to your computer</strong>
   </p>
@@ -167,16 +169,6 @@ Some videos might be private, deleted, or geo-blocked. The script marks these as
   <a href="https://thevault.locker">🔒 The Vault+</a> · 
   <a href="https://cultofsir.com">👁️ The Cult of Sir</a> · 
   <a href="https://sirdominic.store">🛒 Sir Store</a>
-</p>
-
-<p align="center">
-  <a href="https://sirdominic.scot">
-    <img src="http://sirdominic.scot/css/eyehq.png" alt="Sir Studios" height="40">
-  </a>
-  &nbsp;&nbsp;&nbsp;
-  <a href="https://sirdominic.scot">
-    <img src="http://sirdominic.scot/css/sirstudios.png" alt="Sir Studios" height="40">
-  </a>
 </p>
 
 <p align="center">
