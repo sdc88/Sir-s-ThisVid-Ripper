@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """
-Sir's ThisVid Ripper v2.0.0
+Sir's ThisVid Ripper v2.1.0
 Bulk download videos from ThisVid
 """
 
-__version__ = "2.0.0"
+__version__ = "2.1.0"
 
 import os
 import sys
@@ -20,7 +20,7 @@ from datetime import datetime
 try:
     from bs4 import BeautifulSoup
 except ImportError:
-    print("Installing beautifulsoup4...")
+    print("📦 Installing beautifulsoup4...")
     subprocess.run([sys.executable, "-m", "pip", "install", "beautifulsoup4", "-q"])
     from bs4 import BeautifulSoup
 
@@ -470,16 +470,59 @@ def flow_resume():
     return session
 
 # ═══════════════════════════════════════════════════════════════════════════════
+# FIRST RUN WELCOME
+# ═══════════════════════════════════════════════════════════════════════════════
+
+def show_welcome():
+    """Show welcome message on first run."""
+    clear()
+    print()
+    print("═" * 55)
+    print("  🎬 SIR'S THISVID RIPPER")
+    print("═" * 55)
+    print()
+    print("  ✅ Installation complete!")
+    print()
+    print("  ─────────────────────────────────────────────────────")
+    print("  HOW TO USE:")
+    print("  ─────────────────────────────────────────────────────")
+    print()
+    print("  Just type this command anytime:")
+    print()
+    print("      sirsthisvid")
+    print()
+    print("  That's it! Follow the prompts to download videos.")
+    print()
+    print("  ─────────────────────────────────────────────────────")
+    print("  UPDATES:")
+    print("  ─────────────────────────────────────────────────────")
+    print()
+    print("      pip install --upgrade sirsthisvid")
+    print()
+    print("═" * 55)
+    print()
+    input("  Press Enter to start...")
+
+# ═══════════════════════════════════════════════════════════════════════════════
 # MAIN
 # ═══════════════════════════════════════════════════════════════════════════════
 
 def main():
+    # Check if first run
+    config_dir = Path.home() / ".sirsthisvid"
+    first_run_file = config_dir / ".installed"
+    
+    if not first_run_file.exists():
+        config_dir.mkdir(exist_ok=True)
+        show_welcome()
+        first_run_file.touch()
+    
     # Check/install yt-dlp
     if not check_yt_dlp():
         header()
-        print("  ⚠️  yt-dlp not found\n")
+        print("  📦 Setting up yt-dlp (video downloader)...\n")
         if install_yt_dlp():
-            print("  ✅ Installed successfully!")
+            print("  ✅ Ready!")
             time.sleep(1)
         else:
             print("  ❌ Couldn't install yt-dlp")
